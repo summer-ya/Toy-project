@@ -34,7 +34,7 @@ td:nth-child(2) {
     color: #555;
     border: 1px solid #ccc;
 }
-.search { text-align: right; font-size: 12px; top: 10px;}
+.search { text-align: right; font-size: 12px;}
 .search-op { height: 40px; width: 100px; border: 1px solid #e8e8e8; }
 .search-text { height: 40px; width: 240px; border: 1px solid #e8e8e8; }
 .search-btn { height: 40px; width:37px;  border: 1px solid #6bacce; background-color: #6bacce; color: #fff; }
@@ -111,7 +111,7 @@ td:nth-child(2) {
 		<tr>
 			<td>${fboard.bno }</td>
 			<td id="title">
-				<a href="/board/boardList?bno=${fboard.bno }">${fboard.title }&nbsp;</a>
+				<a href="/board/boardView?bno=${fboard.bno }">${fboard.title }&nbsp;</a>
 				<c:if test="${fboard.fileCnt > 0 }">
 <!-- 					<img src="/resources/img/pic.png" style="width: 17px; height: 17px;"> -->
 				</c:if>

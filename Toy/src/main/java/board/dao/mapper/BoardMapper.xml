@@ -27,6 +27,20 @@
 		ORDER BY fboard.bno desc
 	</select>
 	
+	<!-- 조회수 -->
+	<update id="hit" parameterType="board.dto.Board">
+		update fboard
+		set hit= hit + 1
+		where bno =  #{bno}
+	</update>
+	
+		<!-- 게시글 상세보기 -->
+	<select id="selectBoard" resultType="board.dto.Board" parameterType="board.dto.Board">
+		select
+			bno, title, content, userid, hit, writeDate
+		from fboard
+		where bno = #{bno}
+	</select>
 	
 	
 </mapper>

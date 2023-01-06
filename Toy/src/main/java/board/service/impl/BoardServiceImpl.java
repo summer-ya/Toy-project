@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import board.dao.face.BoardDao;
 import board.dto.Board;
+import board.dto.BoardFile;
 import board.service.face.BoardService;
 import board.util.Paging;
 
@@ -39,5 +40,40 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardDao.selectList(paging);
 	}
+	
+	//검색 리스트
+	@Override
+	public List<Board> getList(Paging paging) {
+		
+		List<Board> flist = boardDao.selectSearchlist(paging);
+		logger.info("paging : {}", paging);
+		logger.info("flist : {}", flist);
+		
+		return flist;
+	}
+
+
+	//검색 리스트 페이징
+	@Override
+	public Paging getPagingSearchCnt(Paging paging) {
+		int totalCount = boardDao.getPagingSearchCnt(paging);
+		return new Paging(totalCount, paging.getCurPage());
+	}
+
+
+	@Override
+	public Board view(Board board) {
+		boardDao.hit(board);
+		return boardDao.selectBoard(board);
+	}
+
+
+	@Override
+	public BoardFile getAttachFile(Board board) {
+		return boardDao.selectFileByBno(board);
+	}
+
+
+
 
 }
