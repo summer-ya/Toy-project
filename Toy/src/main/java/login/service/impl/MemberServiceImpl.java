@@ -21,24 +21,35 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean login(Member member) {
 		int loginChk = memberDao.selectCntMember(member);
-		
+
 		logger.info("loginChk : {}", loginChk);
 
 		if( loginChk > 0 )	return true;
-		
+
 		return false;
 	}
 
+	//아이디 중복 체크
 	@Override
 	public int idchk(String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return memberDao.idchk(memberId);
 	}
 
 	@Override
 	public boolean join(Member member) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+		//중복된 id인지 확인
+		if( memberDao.selectCntById(member) > 0 ) {
+			return false;
+		}
 
+		//회원 가입 - DB 삽입
+		memberDao.insert(member);
+
+		//회원가입 결과 확인
+		if( memberDao.selectCntById(member) > 0 ) {
+			return true;
+		}
+		return false;
+
+	}
 }
