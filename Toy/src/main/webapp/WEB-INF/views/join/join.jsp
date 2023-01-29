@@ -250,7 +250,7 @@ margin-left: -7%;
 	width: 60%;
 }
 .form-id, .form-phone, .form-email {
-	width: 350px;
+	width: 370px;
 	color: #323232;
 	font-size: 10pt;
 	font-weight: 540;
@@ -262,7 +262,7 @@ margin-left: -7%;
 	font-weight: 540;
 }
 .form-pw {
-	width: 350px;
+	width: 370px;
 	color: #323232;
 	font-size: 10pt;
 	font-weight: 540;
