@@ -253,7 +253,7 @@ margin-left: -7%;
 	width: 370px;
 	color: #323232;
 	font-size: 10pt;
-	font-weight: 540;
+	font-weight: 540; 
 }
 .form-pwck {
 	width: 380px;
