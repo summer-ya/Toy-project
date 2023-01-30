@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import login.dto.Member;
-import login.service.face.MemberService;
+import login.dto.Memberinfo;
+import login.service.face.MemberinfoService;
 
 @Controller
 public class JoinController {
@@ -25,7 +25,7 @@ public class JoinController {
 	private static final Logger logger = LoggerFactory.getLogger(JoinController.class);
 
 	//서비스 객체
-	@Autowired private MemberService memberService;
+	@Autowired private MemberinfoService memberinfoService;
 
 	@GetMapping("/join/join")
 	public String join() {
@@ -47,7 +47,7 @@ public class JoinController {
 	public String idchk(@RequestParam Map<String, Object> paramMap) {
 		try{
 			String memberId = paramMap.get("memberId").toString();
-			int result = memberService.idchk(memberId);
+			int result = memberinfoService.idchk(memberId);
 			return Integer.toString(result);	 
 
 		} catch(Exception e){
@@ -58,12 +58,12 @@ public class JoinController {
 	}
 
 	@PostMapping("/join")
-	public String joinProcess(Member member, HttpSession session) throws Exception {
-		int result = memberService.idchk(member.getMemberId());
+	public String joinProcess(Memberinfo member, HttpSession session) throws Exception {
+		int result = memberinfoService.idchk(member.getMemberId());
 
 		logger.info("{}", member);
 
-		boolean joinResult = memberService.join(member);
+		boolean joinResult = memberinfoService.join(member);
 
 		try {
 			if( joinResult ) {
