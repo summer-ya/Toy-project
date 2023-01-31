@@ -75,7 +75,6 @@ public class LoginController {
 		@GetMapping("/loginFail")
 		public String loginFail() {
 			
-	//		logger.info("/loginFail [GET]성공");
 			return "login/loginFail";
 		
 		}
